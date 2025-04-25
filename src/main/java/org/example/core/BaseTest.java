@@ -18,9 +18,9 @@ public class BaseTest {
 
     @AfterClass
     public static void finalizaClasse() {
-
         DriverFactory.killDriver();
     }
+
     @After
     public void tearDown() throws IOException {
         gerarScreenShot();
@@ -32,14 +32,6 @@ public class BaseTest {
         try {
             FileUtils.copyFile(imagem, new File("target/screenshots/"+testName.getMethodName()+".png"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void esperar(long tempo) {
-        try {
-            Thread.sleep(tempo);
-        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

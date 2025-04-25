@@ -21,6 +21,5 @@ public class SplashPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@text='Splash!']")));
-
     }
 }

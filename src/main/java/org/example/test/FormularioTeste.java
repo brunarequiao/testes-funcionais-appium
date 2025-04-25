@@ -79,8 +79,6 @@ public class FormularioTeste extends BaseTest {
 
         formulario.salvarDemorado();
 
-        //esperar(3000);
-
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Bruna']")));
 

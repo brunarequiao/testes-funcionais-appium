@@ -1,5 +1,6 @@
 package org.example.test;
 
+import io.appium.java_client.MobileBy;
 import org.example.core.BaseTest;
 import org.example.core.DriverFactory;
 import org.example.page.FormularioPage;
@@ -83,6 +84,30 @@ public class FormularioTeste extends BaseTest {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Bruna']")));
 
         assertEquals("Nome: Bruna", formulario.obterNomeCadastrado());
+    }
+
+    @Test
+    public void deveAlterarData() {
+        formulario.clicarPorTexto("01/01/2000");
+        formulario.clicarPorTexto("20");
+        formulario.clicarPorTexto("OK");
+        Assert.assertTrue(formulario.existeUmElementoPorTexto("20/02/2000"));
+    }
+
+    @Test
+    public void deveAlterarHora() {
+        formulario.clicarPorTexto("06:00");
+        formulario.clicar(MobileBy.AccessibilityId("10"));
+        formulario.clicar(MobileBy.AccessibilityId("40"));
+        formulario.clicarPorTexto("OK");
+        Assert.assertTrue(formulario.existeUmElementoPorTexto("10:40"));
+    }
+
+    @Test
+    public void deveInteragirComSeekbar() {
+        formulario.clicarSeekBar(0.67);
+
+        formulario.salvar();
     }
 }
 

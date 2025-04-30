@@ -35,4 +35,12 @@ public class BaseTest {
             throw new RuntimeException(e);
         }
     }
+
+    public void esperar(long tempo) {
+        try {
+            Thread.sleep(tempo);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

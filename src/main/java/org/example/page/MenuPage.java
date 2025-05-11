@@ -1,6 +1,11 @@
 package org.example.page;
 
 import org.example.core.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.example.core.DriverFactory.getDriver;
 
 public class MenuPage extends BasePage {
 
@@ -30,5 +35,25 @@ public class MenuPage extends BasePage {
 
     public void acessarSwipe() {
         clicarPorTexto("Swipe");
+    }
+
+    public void acessarSwipeList() {
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+
+        scrollDown();
+        clicarPorTexto("Swipe List");
+    }
+
+    public void acessarDragAndDrop() {
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+
+        scrollDown();
+        clicarPorTexto("Drag and drop");
+    }
+
+    public void acessarSBHibrido() {
+        clicarPorTexto("SeuBarriga Híbrido");
     }
 }

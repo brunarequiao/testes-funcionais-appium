@@ -2,7 +2,9 @@ package org.example.core;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
 import io.appium.java_client.touch.offset.PointOption;
 import io.appium.java_client.touch.TapOptions;
@@ -116,6 +118,13 @@ public class BasePage {
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
                 .moveTo(PointOption.point(xFinal, y))
                 .release()
+                .perform();
+    }
+
+    public void cliqueLongo(By by) {
+        new TouchAction<>(getDriver())
+                .longPress(LongPressOptions.longPressOptions()
+                        .withElement(ElementOption.element(getDriver().findElement(by))))
                 .perform();
     }
 }
